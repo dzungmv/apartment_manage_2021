@@ -1,0 +1,26 @@
+
+<form action="/update-infor" method="post" enctype="multipart/form-data">
+    <input type="checkbox" id="modal-update-infor" hidden >
+    <label for="modal-update-infor" class="layer-hidden-close-modal"></label>
+    <div class="modal-update-infor">
+        <label for="modal-update-infor" class="modal-close"><ion-icon name="close"></ion-icon></label>
+        <h2 class="modal-header">
+            Update information
+        </h2>
+        <div class="modal-content">
+            <div class="form-group">
+                <input type="text" placeholder=" " name="name">
+                <label for="" >Display Name</label>
+            </div>
+            <div class="form-file">
+                <label for="file">Avatar</label>
+                <input type="file" id="file" name="avatar" hidden>
+                <label class="custom-file" for="file" >Select a file</label>
+                <img id="file-select-preview" src="" alt="">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn-change">Update</button>
+        </div>
+    </div>
+</form>

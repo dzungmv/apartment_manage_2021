@@ -1,0 +1,50 @@
+<div class="post">
+    <div class="post-header">
+        <div class="avatar-sm">
+            <img src="/images/department/kcntt.png" alt="Khoa Công Nghệ Thông Tin DH TDT">
+        </div>
+        <div class="post-header-infor">
+            <a href="#" class="post-header-name">
+                Nguyen Vinh Tieng
+            </a>
+            <div class="post-header-time">
+                09:20am
+            </div>
+        </div>
+        <div class="post-header-operation">
+            <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+            <ul class="list-operation">
+                <li> Delete </li>
+            </ul>
+        </div>
+    </div>
+    <div class="post-content">
+        <div class="post-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, ratione! Lorem ipsum dolor sit amet
+        </div>
+        {{!-- <div class="post-img">
+            <img src="/images/avatars/879383.jpg" alt="">
+        </div> --}}
+        <div class="post-video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/64qA60U7hNE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+    <div class="post-interact">
+        <div class="comment-count">
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon> 
+            <span>12 comments</span> 
+        </div>
+        <div class="add-comment">
+            <input type="text" placeholder="Add a comment...">
+            <button><ion-icon name="paper-plane"></ion-icon></button>
+        </div>
+    </div>
+    <ul class="post-comment">
+        {{> post/comment}}
+        {{> post/comment}}
+        {{> post/comment}}
+    </ul>
+    <div class="seemore">
+        Seemore comments...
+    </div>
+</div>
