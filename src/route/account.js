@@ -19,4 +19,5 @@ router.get('/', AccountController.renderLogin)
 router.post('/loginByAccount', AccountController.loginByAccount)
 router.post('/update', checkUser, AccountController.updateAccount)
 router.get('/logout', AccountController.logOut)
+router.get("/user/:id", AccountController.renderUserProfile);
 module.exports = router;
