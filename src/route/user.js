@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router()
 const UserController = require('../app/controllers/UserController');
-const checkLogin = require('../app/middlewares/checkLogin')
+const checkUser = require('../app/middlewares/checkUser')
 
-router.get('/home', checkLogin, UserController.renderHome)
-router.get('/nofify/:id', checkLogin, UserController.renderDetailNotify)
-router.get('/notify', checkLogin, UserController.renderNotyfyPage)
-router.get('/notify-departments', checkLogin, UserController.renderNotyfyDepartmentPage)
-router.get('/my-profile', checkLogin, UserController.renderMyProfile)
+router.get('/home', checkUser, UserController.renderHome)
+router.get('/nofify/:id', checkUser, UserController.renderDetailNotify)
+router.get('/notify', checkUser, UserController.renderNotyfyPage)
+router.get('/notify-departments', checkUser, UserController.renderNotyfyDepartmentPage)
+router.get('/my-profile', checkUser, UserController.renderMyProfile)
 
 module.exports = router;

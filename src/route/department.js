@@ -1,15 +1,14 @@
 const express = require('express');
 const router = express.Router()
-const checkLogin = require('../app/middlewares/checkLogin');
+const checkDepartment = require('../app/middlewares/checkDepartment');
 const DepartmentController = require('../app/controllers/DepartmentController');
 
-router.get('/home', checkLogin, DepartmentController.renderHome)
-router.get('/nofify/:id', checkLogin, DepartmentController.renderDetailNotify)
-router.get('/notify', checkLogin, DepartmentController.renderNotyfyPage)
-// router.get('/notify-departments', checkLogin, DepartmentController.renderNotyfyDepartmentPage)
-router.get('/accounts', checkLogin, DepartmentController.renderAccountPage)
-router.post('/createNotify', checkLogin, DepartmentController.createNotify)
-router.post('/:id/update', checkLogin, DepartmentController.updateNotify)
-router.delete('/:id/delete', checkLogin, DepartmentController.deleteNotify)
-
+router.get('/home', checkDepartment, DepartmentController.renderHome)
+router.get('/notify/:id', checkDepartment, DepartmentController.renderDetailNotify)
+router.get('/notify', checkDepartment, DepartmentController.renderNotifyPage)
+router.get('/accounts', checkDepartment, DepartmentController.renderAccountPage)
+router.post('/createNotify', checkDepartment, DepartmentController.createNotify)
+router.post('/notify/:id', checkDepartment, DepartmentController.updateNotify)
+router.delete('/notify/:id', checkDepartment, DepartmentController.deleteNotify)
+router.post('/changePassword', checkDepartment, DepartmentController.changePassword)
 module.exports = router;

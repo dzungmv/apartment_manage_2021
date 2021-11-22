@@ -1,14 +1,11 @@
 const express = require('express');
 const router = express.Router()
 const AdminController = require('../app/controllers/AdminController');
-const checkLogin = require('../app/middlewares/checkLogin');
+const checkAdmin = require('../app/middlewares/checkAdmin');
 
-router.get('/home', checkLogin, AdminController.renderHome)
-// router.get('/nofify/:id', AdminController.renderDetailNotify)
-// router.get('/notify', AdminController.renderNotyfyPage)
-// router.get('/notify-departments', AdminController.renderNotyfyDepartmentPage)
-router.get('/departments', checkLogin, AdminController.renderDepartmentPage)
-router.get('/accounts', checkLogin, AdminController.renderMyAccount)
-router.post('/createDepartmentAccount', checkLogin, AdminController.createDepartmentAccount)
+router.get('/home', checkAdmin, AdminController.renderHome)
+router.get('/departments', checkAdmin, AdminController.renderDepartmentPage)
+router.get('/accounts', checkAdmin, AdminController.renderMyAccount)
+router.post('/createDepartmentAccount', checkAdmin, AdminController.createDepartmentAccount)
 
 module.exports = router;
