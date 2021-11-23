@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const Account = require('../models/Account');
 const uploadImage = require('../middlewares/uploadImage');
 class PostController {
     async createNewPost(req, res) {
@@ -55,10 +56,14 @@ class PostController {
 
     // add new comment into Post
     async addComment(req, res) {
+        const account = await Account.findOne({
+          _id: req.session.user_id,
+        }).lean();
         const { post_id } = req.params;
         const { content } = req.body;
-        const comment = {content, id_user: req.account._id, username: req.account.username, avatar: req.account.avatar};
+        const comment = {content, id_user: account._id, username: account.username, userAvatar: account.avatar};
         const post = await Post.findById(post_id);
+        console.log(post);
         post.comments.push(comment);
         await post.save();
         res.status(200).send(comment);

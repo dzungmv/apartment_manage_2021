@@ -29,24 +29,30 @@
         {{/if}}
         {{#if this.urlYoutube}}
         <div class="post-video">
-            <iframe width="560" height="315" src={{this.urlYoutube}} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" src={{this.urlYoutube}} title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
         </div>
         {{/if}}
     </div>
     <div class="post-interact">
         <div class="comment-count">
-            <ion-icon name="chatbox-ellipses-outline"></ion-icon> 
-            <span>12 comments</span> 
+            <ion-icon name="chatbox-ellipses-outline"></ion-icon>
+            <span>12 comments</span>
         </div>
-        <div class="add-comment">
-            <input type="text" placeholder="Add a comment...">
-            <button><ion-icon name="paper-plane"></ion-icon></button>
-        </div>
+        <form action= "/API/comment/619c95e7270faac3b26cc18f/create" method="post">
+            <div class="add-comment">
+                <input type="text" placeholder="Add a comment..." name="content">
+                <button>
+                    <ion-icon name="paper-plane"></ion-icon>
+                </button>
+            </div>
+        </form>
     </div>
     <ul class="post-comment">
+        {{#each this.comments}}
         {{> post/comment}}
-        {{> post/comment}}
-        {{> post/comment}}
+        {{/each}}
     </ul>
     <div class="seemore">
         Seemore comments...
