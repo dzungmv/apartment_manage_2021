@@ -34,6 +34,7 @@ class DepartmentController {
         const account = req.account;
         const notification = new Notification({
             userId: account._id,
+            username: account.username,
             category: req.body.category,
             title: req.body.title,
             date: req.body.date,
@@ -67,27 +68,6 @@ class DepartmentController {
     renderAccountPage(req, res, next) {
         const account = req.account;
         res.render("./department/account", { account });
-    }
-
-    // changePassword
-    async changePassword(req, res, next) {
-        const account = req.account;
-        const oldPassword = req.body.oldPassword;
-        const newPassword = req.body.newPassword;
-        const confirmPassword = req.body.confirmPassword;
-        if (newPassword !== confirmPassword) {
-            res.send("Mật khẩu không khớp");
-        } else {
-            
-            const check = await bcrypt.compare(oldPassword, account.password);
-            if (check) {
-                const hash = await bcrypt.hash(newPassword, 10);
-                await Account.findOneAndUpdate({ _id: account._id }, { password: hash });
-                res.redirect("/logout");
-            } else {
-                res.send("Mật khẩu cũ không đúng");
-            }
-        }
     }
 }
 

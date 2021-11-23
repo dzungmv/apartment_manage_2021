@@ -13,37 +13,24 @@
         </div>
         <div class="account-content">
             <table>
+                
                 <tr>
                     <th>Username</th>
                     <th>Departments</th>
-                    <th>Created At</th>
                 </tr>
+                {{#each departments}}
                 <tr>
-                    <td>123132</td>
+                    <td>{{this.username}}</td>
                     <td class="department-column">
                         <ul class="departments">
-                            <li>Khoa CNTT</li>
-                            <li>Khoa QTKD</li>
-                            <li>Khoa DDT</li>
-                            <li>Phong CTHSSV</li>
-                            <li>TDT CLC</li>
+                            {{#each this.category}}
+                            <li>{{this}}</li>
+                            {{/each}}
                         </ul>
                     </td>
-                    <td>12/20/2016</td>
                 </tr>
-                <tr>
-                    <td>123132</td>
-                    <td class="department-column">
-                        <ul class="departments">
-                            <li>Khoa CNTT</li>
-                            <li>Khoa QTKD</li>
-                            <li>Khoa DDT</li>
-                            <li>Phong CTHSSV</li>
-                            <li>TDT CLC</li>
-                        </ul>
-                    </td>
-                    <td>12/20/2016</td>
-                </tr>
+                {{/each}}
+
             </table>
         </div>
     </div>

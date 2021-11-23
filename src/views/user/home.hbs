@@ -25,9 +25,9 @@
                         <a href="/notify">See all</a>
                     </div>
                     <ul class="home-notifications-list">
-                        {{> notification}}
-                        {{> notification}}
-                        {{> notification}}
+                        {{#each first_10_notifications}}
+                            {{> notification}}
+                        {{/each}}
                     </ul>
                 </div>
             </div>

@@ -11,5 +11,4 @@ router.get('/accounts', DepartmentController.renderAccountPage)
 router.post('/createNotify', DepartmentController.createNotify)
 router.post('/notify/:id', DepartmentController.updateNotify)
 router.delete('/notify/:id', DepartmentController.deleteNotify)
-router.post('/changePassword', DepartmentController.changePassword)
 module.exports = router;

@@ -63,7 +63,6 @@ class PostController {
         const { content } = req.body;
         const comment = {content, id_user: account._id, username: account.username, userAvatar: account.avatar};
         const post = await Post.findById(post_id);
-        console.log(post);
         post.comments.push(comment);
         await post.save();
         res.status(200).send(comment);

@@ -100,6 +100,21 @@ class AccountController {
             .lean();
         res.render("./user/profile", { account, user, first_10_post });
     }
+
+    async changePassword(req, res, next) {
+        const newPassword = req.body.newPassword;
+        const confirmPassword = req.body.confirmPassword;
+        if (newPassword !== confirmPassword) {
+            res.send("Mật khẩu không khớp");
+        } else {
+            const hash = await bcrypt.hash(newPassword, 10);
+            await Account.findOneAndUpdate(
+                { _id: req.session.user_id },
+                { password: hash }
+            );
+            res.redirect("/logout");
+        }
+    }
 }
 
 module.exports = new AccountController();

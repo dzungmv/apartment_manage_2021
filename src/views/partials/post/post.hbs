@@ -38,9 +38,9 @@
     <div class="post-interact">
         <div class="comment-count">
             <ion-icon name="chatbox-ellipses-outline"></ion-icon>
-            <span>12 comments</span>
+            <span>{{this.comments.length}} Comment</span>
         </div>
-        <form action= "/API/comment/619c95e7270faac3b26cc18f/create" method="post">
+        <form action= "/API/comment/{{this._id}}/create" method="post">
             <div class="add-comment">
                 <input type="text" placeholder="Add a comment..." name="content">
                 <button>

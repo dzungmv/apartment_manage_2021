@@ -11,12 +11,12 @@
             <div class="left-block home-item active">
                 {{> post/createPost}}
                 <div id="posts">
-                    {{> post/post}}
-                    {{> post/post}}
-                    {{> post/post}}
+                    {{#each first_10_posts}}
+                        {{> post/post}}
+                    {{/each}}
                 </div>
             </div>
-            <div class="right-block home-item">
+            {{!-- <div class="right-block home-item">
                 <div class="home-notifications">
                     <div class="home-notifications-header">
                         <span>
@@ -25,12 +25,12 @@
                         <a href="#!">See all</a>
                     </div>
                     <ul class="home-notifications-list">
-                        {{> notification}}
-                        {{> notification}}
-                        {{> notification}}
+                        {{#each first_10_notifications}}
+                            {{> notification}}
+                        {{/each}}
                     </ul>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
     

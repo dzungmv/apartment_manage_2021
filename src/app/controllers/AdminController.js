@@ -1,26 +1,26 @@
 const Account = require('../models/Account');
 const Post = require('../models/Post');
 const bcrypt = require("bcrypt");
+const uploadImage = require('../middlewares/uploadImage');
 
 class AdminController {
-    // GET admin/home
     async renderHome(req, res, next) {
         const account = req.account;
-        const first_10_post = await Post.find({}).sort({ created_at: -1 }).limit(10).lean();
-        res.send({ account, first_10_post });
-        // res.render('./admin/home', { account, first_10_post });
+        const first_10_posts = await Post.find({}).sort({ created_at: -1 }).limit(10).lean();
+        res.render('./admin/home', { account, first_10_posts });
     }
     
-    // GET admin/departments
+
     async renderDepartmentPage(req, res, next) {
         const account = req.account;
         const departments = await Account.find({ role: 'department' }).lean();
-        res.send({ account, departments });
-        // res.render('./admin/departmentPage', { account, departments });
+        res.render('./admin/departmentPage', { account, departments });
     }
 
     async createDepartmentAccount(req, res, next) {
-        const { username, category} = req.body;
+        const category = req.body.department;
+        const { username } = req.body;
+        const avatar = "/images/department/" + category[0] + ".png";
         // check account exist
         let account = await Account.findOne({ username });
         if (account) {
@@ -33,6 +33,7 @@ class AdminController {
             username,
             password: hash,
             role: 'department',
+            avatar,
             category
         });
         await account.save();

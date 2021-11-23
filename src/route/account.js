@@ -20,4 +20,5 @@ router.post('/loginByAccount', AccountController.loginByAccount)
 router.post('/update', checkUser, AccountController.updateAccount)
 router.get('/logout', AccountController.logOut)
 router.get("/user/:id", AccountController.renderUserProfile);
+router.post("/change-password", AccountController.changePassword);
 module.exports = router;
