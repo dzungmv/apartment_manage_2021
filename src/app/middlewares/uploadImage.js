@@ -1,6 +1,6 @@
 const firebaseAdmin = require("firebase-admin");
 const { v4: uuidv4 } = require("uuid");
-const serviceAccount = require("../../config/final-web-2021-firebase-adminsdk-agscc-0698e404f4.json");
+const serviceAccount = require("../../config/firebase.json");
 const admin = firebaseAdmin.initializeApp({
   credential: firebaseAdmin.credential.cert(serviceAccount)
 });

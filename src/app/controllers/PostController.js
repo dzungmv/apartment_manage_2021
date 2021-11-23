@@ -3,8 +3,15 @@ const uploadImage = require('../middlewares/uploadImage');
 class PostController {
     async createNewPost(req, res) {
         const account = req.account;
-        const imagePath = await uploadImage(req.file.path, req.file.filename);
-        const { content, urlYoutube } = req.body;
+        let imagePath = "";
+        if (req.file) {
+            imagePath = await uploadImage(
+              req.file.path,
+              req.file.filename
+            );
+        }
+        let { content, urlYoutube } = req.body;
+        urlYoutube = urlYoutube.replace("watch?v=", "embed/");
         const id_user = account._id;
         const username = account.username;
         const userAvatar = account.avatar;
@@ -48,10 +55,10 @@ class PostController {
 
     // add new comment into Post
     async addComment(req, res) {
-        const { id } = req.params;
+        const { post_id } = req.params;
         const { content } = req.body;
         const comment = {content, id_user: req.account._id, username: req.account.username, avatar: req.account.avatar};
-        const post = await Post.findById(id);
+        const post = await Post.findById(post_id);
         post.comments.push(comment);
         await post.save();
         res.status(200).send(comment);

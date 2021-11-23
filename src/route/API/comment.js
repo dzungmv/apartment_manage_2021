@@ -4,7 +4,6 @@ const checkUser = require("../../app/middlewares/checkUser");
 const PostController = require("../../app/controllers/PostController");
 const multer = require("multer");
 
-router.use(checkUser);
-router.get("/", );
+router.post('/create', PostController.addComment);
 
 module.exports = router;
