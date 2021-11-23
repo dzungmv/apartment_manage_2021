@@ -40,7 +40,7 @@ class AccountController {
         let avatar = req.user.photos[0].value;
         const data = {
             email,
-            name: firstName + familyName,
+            username: firstName + familyName,
             avatar,
             role: "student",
         };

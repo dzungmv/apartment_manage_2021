@@ -40,7 +40,7 @@ class DepartmentController {
             content: req.body.content,
         });
         await notification.save();
-        res.redirect("/department/notify");
+        res.status(200).send({ notification });
     }
 
     // POST notify/:id

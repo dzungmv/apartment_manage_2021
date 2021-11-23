@@ -29,6 +29,14 @@ const Post = new Schema({
         type: String,
         required: true
     },
+    username: {
+        type: String,
+        required: true
+    },
+    userAvatar: {
+        type: String,
+        required: true
+    },
     date: {
         type: Date,
         default: Date.now
@@ -39,11 +47,9 @@ const Post = new Schema({
     },
     imagePath: {
         type: String,
-        required: true
     },
     urlYoutube: {
         type: String,
-        required: true
     },
     comments: [Comment]
 });
