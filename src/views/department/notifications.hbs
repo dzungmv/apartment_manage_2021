@@ -49,15 +49,9 @@
                     </ul>
                 </div>
                 <ul class="notifications-list">
+                    {{#each my_notifications}}
                     {{> notification}}
-                    {{> notification}}
-                    {{> notification}}
-                    {{> notification}}
-                    {{> notification}}
-                    {{> notification}}
-                    {{> notification}}
-                    {{> notification}}
-                    
+                    {{/each}}
                 </ul>
             </div>
         </div>

@@ -1,5 +1,5 @@
 
-<form action="">
+<form action="/department/createNotify" method="post">
     <input type="checkbox" id="modal-create-notification" >
     <label for="modal-create-notification" class="layer-hidden-close-modal"></label>
     <div class="modal-create-notification">
@@ -10,29 +10,21 @@
         <div class="modal-content">
             <div class="modal-content-text">
                 <label class="bold" for="">Title</label> <br>
-                <textarea type="text" placeholder="Username..."></textarea>
+                <textarea type="text" name="title"></textarea>
             </div>
             <div class="modal-content-text-content">
                 <label class="bold" for="">Content</label> <br>
-                <textarea type="text" placeholder="Type some thing..."></textarea>
+                <textarea type="text" placeholder="Type some thing..." name="content"></textarea>
             </div>
             <div class="bold">Category</div>
             <div class="department-list">
+                {{#each account.category}}
                 <div class="department-item">
-                    <input type="checkbox" id="1" class="checkbox-input" name="department[]">
-                        <label class="checkbox-label" for="1"></label>
-                        <label for="1">TDT CLC</label>
+                    <input type="radio" id={{this}} class="checkbox-input" name="category" value={{this}}>
+                    <label class="checkbox-label" for={{this}}></label>
+                    <label for={{this}}>{{this}}</label>
                 </div>
-                <div class="department-item">
-                    <input type="checkbox" id="1" class="checkbox-input" name="department[]">
-                        <label class="checkbox-label" for="1"></label>
-                        <label for="1">TDT CLC</label>
-                </div>
-                <div class="department-item">
-                    <input type="checkbox" id="1" class="checkbox-input" name="department[]">
-                        <label class="checkbox-label" for="1"></label>
-                        <label for="1">TDT CLC</label>
-                </div>
+                {{/each}}
             </div>
             
         </div>
