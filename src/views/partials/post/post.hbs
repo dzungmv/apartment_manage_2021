@@ -1,3 +1,5 @@
+{{> modals/deletePost}}
+{{> modals/updatePost}}
 <div class="post">
     <div class="post-header">
         <div class="avatar-sm">
@@ -14,7 +16,12 @@
         <div class="post-header-operation">
             <ion-icon name="ellipsis-vertical-outline"></ion-icon>
             <ul class="list-operation">
-                <li> Delete </li>
+                <li class="item-operation delete">
+                    <label for="modal-delete-post" data-id="{{this.id_user}}"> Delete </label>
+                </li>
+                <li class="item-operation edit">
+                    <label for="modal-edit-post"> Edit </label>
+                </li>
             </ul>
         </div>
     </div>
@@ -40,7 +47,7 @@
             <ion-icon name="chatbox-ellipses-outline"></ion-icon>
             <span>{{this.comments.length}} Comment</span>
         </div>
-        <form action= "/API/comment/{{this._id}}/create" method="post">
+        <form action="/API/comment/{{this._id}}/create" method="post">
             <div class="add-comment">
                 <input type="text" placeholder="Add a comment..." name="content">
                 <button>

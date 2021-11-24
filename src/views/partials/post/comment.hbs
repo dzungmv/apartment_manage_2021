@@ -1,3 +1,4 @@
+{{> modals/deleteComment}}
 <li class="comment">
     <div class="avatar-sm">
         <img src={{this.userAvatar}} alt="">
@@ -13,5 +14,10 @@
     <div class="comment-time">{{this.date}}</div>
     <div class="comment-operation">
         <ion-icon name="ellipsis-vertical"></ion-icon>
+        <div class="comment-operation-delete">
+            <label for="modal-delete-comment" class="delete">
+                Delete
+            </label>
+        </div>
     </div>
 </li>
