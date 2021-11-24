@@ -46,7 +46,7 @@ class AccountController {
         };
         const account = new Account(data);
         await account.save();
-
+        req.session.user_id = account._id;
         res.redirect("/home");
     }
 
