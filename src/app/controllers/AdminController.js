@@ -6,8 +6,8 @@ const uploadImage = require('../middlewares/uploadImage');
 class AdminController {
     async renderHome(req, res, next) {
         const account = req.account;
-        const first_10_posts = await Post.find({}).sort({ created_at: -1 }).limit(10).lean();
-        res.render('./admin/home', { account, first_10_posts });
+        const first_5_posts = await Post.find({}).sort({ date: -1 }).limit(10).lean();
+        res.render('./admin/home', { account, first_5_posts });
     }
     
 

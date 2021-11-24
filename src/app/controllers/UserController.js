@@ -7,10 +7,13 @@ class UserController {
     // GET /home
     async renderHome(req, res, next) {
         const account = req.account;
-        const first_10_posts = await Post.find({}).sort({ created_at: -1 }).limit(10).lean()
+        const first_5_posts = await Post.find({})
+          .sort({ date: -1 })
+          .limit(10)
+          .lean();
         const first_10_notifications = await Notification.find({ user_id: account._id }).sort({ created_at: -1 }).limit(10).lean()
         // res.send({ account, first_10_post, first_10_notifications })
-        res.render('./user/home', { account, first_10_posts, first_10_notifications })
+        res.render('./user/home', { account, first_5_posts, first_10_notifications })
     }
     // GET /notify
     async renderNotifyPage(req, res, next) {

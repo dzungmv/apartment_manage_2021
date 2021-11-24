@@ -7,10 +7,11 @@ class DepartmentController {
    
     async renderHome(req, res, next) {
         const account = req.account;
-        const first_10_posts = await Post.find({ user_id: account._id })
-            .sort({ created_at: -1 })
-            .limit(10).lean();
-        res.render('./department/home', { account, first_10_posts });
+        const first_5_posts = await Post.find({})
+          .sort({ date: -1 })
+          .limit(10)
+          .lean();
+        res.render('./department/home', { account, first_5_posts });
     }
 
     async renderNotifyPage(req, res, next) {
