@@ -7,8 +7,8 @@ class PostController {
         let imagePath = "";
         if (req.file) {
             imagePath = await uploadImage(
-              req.file.path,
-              req.file.filename
+                req.file.path,
+                req.file.filename
             );
         }
         let { content, urlYoutube } = req.body;
@@ -42,10 +42,11 @@ class PostController {
         res.status(200).send({ updatePost });
     }
 
-    async deletePost(req, res) {
-        const { id } = req.params;
-        const deletePost = await Post.findByIdAndDelete(id);
-        res.status(200).send({ deletePost });
+    // [DELETE] /Post/:id
+    deletePost(req, res, next) {
+        Post.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('back'))
+            .catch(next);
     }
 
     async getPosts(req, res) {
@@ -57,11 +58,11 @@ class PostController {
     // add new comment into Post
     async addComment(req, res) {
         const account = await Account.findOne({
-          _id: req.session.user_id,
+            _id: req.session.user_id,
         }).lean();
         const { post_id } = req.params;
         const { content } = req.body;
-        const comment = {content, id_user: account._id, username: account.username, userAvatar: account.avatar};
+        const comment = { content, id_user: account._id, username: account.username, userAvatar: account.avatar };
         const post = await Post.findById(post_id);
         post.comments.push(comment);
         await post.save();

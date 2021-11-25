@@ -1,5 +1,3 @@
-{{> modals/deletePost}}
-{{> modals/updatePost}}
 <div class="post">
     <div class="post-header">
         <div class="avatar-sm">
@@ -17,7 +15,8 @@
             <ion-icon name="ellipsis-vertical-outline"></ion-icon>
             <ul class="list-operation">
                 <li class="item-operation delete">
-                    <label for="modal-delete-post" data-id="{{this.id_user}}"> Delete </label>
+                    <label for="modal-delete-post" data-id="{{this._id}}" data-toggle="modal"
+                        data-target="#delete-modal-btn"> Delete </label>
                 </li>
                 <li class="item-operation edit">
                     <label for="modal-edit-post"> Edit </label>
@@ -65,3 +64,46 @@
         Seemore comments...
     </div>
 </div>
+
+{{!-- Modal delete--}}
+<div id="delete-modal-btn" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>You sure you want to delete this post?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button id="btn-delete-post" type="button" class="btn btn-danger">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form name="delete-post-form" method="post"></form>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var PostId;
+        var deleteForm = document.forms['delete-post-form'];
+        var btnDeletePost = document.getElementById('btn-delete-post');
+
+        $('#delete-modal-btn').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget);
+            PostId = button.data('id');
+        });
+
+
+        btnDeletePost.onclick = function () {
+            deleteForm.action = '/API/post/' + PostId + '?_method=DELETE';
+            deleteForm.submit();
+        }
+    });
+
+</script>
